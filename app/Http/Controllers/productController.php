@@ -74,7 +74,7 @@ class productController extends Controller
 
         ]);
 
-        $namaFoto =  $request->kategori . $request->nama_produk . '-' . time() . '.' .  $request->fotoProduk->extension();
+        $namaFoto =  $request->kategori . $request->namaProduk . '-' . time() . '.' .  $request->fotoProduk->extension();
 
         $request->fotoProduk->move(public_path('images'), $namaFoto);
 
@@ -123,12 +123,38 @@ class productController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $request->validate([
+            'kategori' => 'required',
+            'namaProduk' => 'required',
+            'harga' => 'required',
+            'deskripsi' => 'required',
+            'fotoProduk' => 'mimes:jpeg,png,jpg,gif,svg|max:4096',
+
+
+        ]);
+
+        $namaFoto = null;
+
+        if ($request->fotoProduk) {
+
+            $namaFoto =  $request->kategori . '-' . $request->namaProduk . '-' . time() . '.' .  $request->fotoProduk->extension();
+
+            $request->fotoProduk->move(public_path('images'), $namaFoto);
+        }
+
+
         $product = product::find($id);
         $product->kategori = $request->kategori;
         $product->nama_produk = $request->namaProduk;
         $product->harga_produk = $request->harga;
         $product->deskripsi_produk = $request->deskripsi;
-        $product->foto_produk = $product->foto_produk;
+        if ($namaFoto) {
+            $product->foto_produk = '/images' . '/' . $namaFoto;
+        } else {
+            $product->foto_produk = $product->foto_produk;
+        }
+
         $product->save();
 
         return redirect('/product/show');
