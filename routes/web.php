@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\DestinationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,10 @@ Route::post('/product', [productController::class, 'store']);
 Route::get('/product/{id}', [productController::class, 'edit']);
 Route::put('/product/{id}', [productController::class, 'update']);
 Route::delete('/product/{id}', [productController::class, 'destroy']);
+
+Route::get('/destination/create', [DestinationController::class, 'create']);
+Route::post('/destination', [DestinationController::class, 'store']);
+Route::get('/destination/show', [DestinationController::class, 'show']);
+Route::get('/destination/{id}', [DestinationController::class, 'edit']);
+Route::put('/destination/{id}', [DestinationController::class, 'update']);
+Route::delete('/destination/{id}', [DestinationController::class, 'destroy']);

@@ -15,7 +15,7 @@ class productsCollection extends ResourceCollection
     public function toArray($request)
     {
         return [
-            'message' => 'berhasil di load',
+            'message' => 'success',
             'data' => $this->collection,
         ];
     }

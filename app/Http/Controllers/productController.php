@@ -13,35 +13,16 @@ class productController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($kategori)
+    public function index($params)
     {
+        $products = DB::table('products')->where('id', $params)->orwhere('kategori', $params)->get();
+        return response()->json(
 
-        if ($kategori) {
-            $products = DB::table('products')->where('kategori', $kategori)->get();
-            if ($products) {
-                return response()->json(
-                    [
-                        "message" => "success",
-                        "data"    => $products
-                    ]
-                );
-            } else {
-                return response()->json(
-                    [
-                        "message" => "Data Not Found!!",
-
-                    ]
-                );
-            }
-        } else {
-            $products = product::all();
-            return response()->json(
-                [
-                    "message" => "success",
-                    "data"    => $products
-                ]
-            );
-        }
+            [
+                "message" => "success",
+                "data"    => $products
+            ]
+        );
     }
 
     /**
@@ -112,7 +93,7 @@ class productController extends Controller
     public function edit(product $product, $id)
     {
         $products = product::find($id);
-        return view('edit', compact('products'));
+        return view('productEdit', compact('products'));
     }
     /**
      * Update the specified resource in storage.

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\product;
 use App\Http\Resources\productsCollection;
 use App\Http\Controllers\productController;
+use App\Http\Controllers\DestinationController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,3 +22,5 @@ Route::get('/product', function () {
     return new productsCollection(product::all());
 });
 Route::get('/product/{kategori}', [productController::class, 'index']);
+Route::get('/destination', [DestinationController::class, 'index']);
+Route::get('/destination/s/{params}', [DestinationController::class, 'search']);
