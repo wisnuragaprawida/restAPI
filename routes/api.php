@@ -24,6 +24,9 @@ Route::get('/product', function () {
 });
 Route::get('/product/{kategori}', [productController::class, 'index']);
 Route::get('/destination', [DestinationController::class, 'index']);
+Route::get('/destination/id/{id}', [DestinationController::class, 'destinationById']);
 Route::get('/destination/s/{params}', [DestinationController::class, 'search']);
 
 Route::get('/cafe', [CafeController::class, 'index']);
+Route::get('/cafe/id/{id}', [CafeController::class, 'cafeById']);
+Route::get('/cafe/s/{params}', [CafeController::class, 'search']);
