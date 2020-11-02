@@ -6,6 +6,7 @@ use App\Models\product;
 use App\Http\Resources\productsCollection;
 use App\Http\Controllers\productController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\CafeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -24,3 +25,5 @@ Route::get('/product', function () {
 Route::get('/product/{kategori}', [productController::class, 'index']);
 Route::get('/destination', [DestinationController::class, 'index']);
 Route::get('/destination/s/{params}', [DestinationController::class, 'search']);
+
+Route::get('/cafe', [CafeController::class, 'index']);

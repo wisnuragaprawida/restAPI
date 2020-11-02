@@ -13,10 +13,10 @@
                 <div class="col-lg-3 ">
         
                 <div class="card mx-auto" style="width: 80%;">
-                    <img src="{{$item['destinationImage']}}" class="card-img-top fotoProduk" alt="...">
+                    <img src="{{$item['destinationImage']}}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">{{$item['name']}}</h5>
-                        <p class="card-text">{{$item['description']}}</p>
+                       
                         <p class="card-text"><small>location:  {{$item['location']}}</small></p>
                   
                     <a href="/destination/{{$item['id']}}" class="d-inline p-2 btn btn-primary">Ganti</a>

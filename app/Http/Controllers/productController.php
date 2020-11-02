@@ -32,7 +32,7 @@ class productController extends Controller
      */
     public function create()
     {
-        return view('formUpload');
+        return view('product.formUpload');
     }
 
     /**
@@ -81,7 +81,7 @@ class productController extends Controller
     public function show(product $product)
     {
         $products = product::paginate(4);
-        return view('products', compact('products'));
+        return view('product.products', compact('products'));
     }
 
     /**
@@ -93,7 +93,7 @@ class productController extends Controller
     public function edit(product $product, $id)
     {
         $products = product::find($id);
-        return view('productEdit', compact('products'));
+        return view('product.productEdit', compact('products'));
     }
     /**
      * Update the specified resource in storage.

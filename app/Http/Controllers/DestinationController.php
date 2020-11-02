@@ -27,6 +27,22 @@ class DestinationController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @return \Illuminate\Http\Response
+     */
+    public function destinationById($id)
+    {
+        $destination = Destination::find($id);
+        return response()->json(
+
+            [
+                "message" => "success",
+                "data"    => $destination
+            ]
+        );
+    }
+    /**
+     * Display a listing of the resource.
+     *
      * @return \Illuminate\Http\Responses
      */
     public function search($params)
@@ -69,7 +85,7 @@ class DestinationController extends Controller
      */
     public function create()
     {
-        return view('formUploadDestination');
+        return view('destination.formUploadDestination');
     }
 
     /**
@@ -118,7 +134,7 @@ class DestinationController extends Controller
     public function show(Destination $destination)
     {
         $destinations = destination::paginate(4);
-        return view('destinations', compact('destinations'));
+        return view('destination.destinations', compact('destinations'));
     }
 
     /**
@@ -130,7 +146,7 @@ class DestinationController extends Controller
     public function edit(Destination $destination, $id)
     {
         $destinations = destination::find($id);
-        return view('destinationEdit', compact('destinations'));
+        return view('destination.destinationEdit', compact('destinations'));
     }
 
     /**

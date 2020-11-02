@@ -13,14 +13,14 @@ class CreateCafeMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('cafeMenus', function (Blueprint $table) {
+        Schema::create('cafe_menus', function (Blueprint $table) {
             $table->id();
             $table->string('category');
             $table->string('name');
             $table->longText('description');
             $table->integer('amount');
             $table->string('menuImage');
-            $table->foreignId('menu_id');
+            $table->foreignId('cafe_id');
             $table->timestamps();
         });
     }
@@ -32,6 +32,6 @@ class CreateCafeMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cafeMenus');
+        Schema::dropIfExists('cafe_menus');
     }
 }
